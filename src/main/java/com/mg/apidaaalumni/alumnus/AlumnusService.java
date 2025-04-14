@@ -21,6 +21,10 @@ public class AlumnusService {
         return alumnusRepository.findAll();
     }
 
+    public Alumnus getAlumnusById(Integer alumnusId) {
+        return alumnusRepository.findById(alumnusId).orElse(null);
+    }
+
     public List<Alumnus> getAlumsByIndustry(String searchText) {
         return alumnusRepository.findAll().stream()
                 .filter(alumnus -> alumnus.getIndustry().toLowerCase().contains(searchText.toLowerCase()))
@@ -63,6 +67,19 @@ public class AlumnusService {
             alumToUpdate.setYear(updatedAlumnus.getYear());
             alumToUpdate.setPastRoles(updatedAlumnus.getPastRoles());
             alumToUpdate.setIndustry(updatedAlumnus.getIndustry());
+
+            alumnusRepository.save(alumToUpdate);
+            return alumToUpdate;
+        }
+        return null;
+    }
+
+    public Alumnus updateHeadshot(Integer alumnusId, String filename) {
+        Optional<Alumnus> existingAlum = alumnusRepository.findById(alumnusId);
+
+        if (existingAlum.isPresent()) {
+            Alumnus alumToUpdate = existingAlum.get();
+            alumToUpdate.setHeadshot(filename);
 
             alumnusRepository.save(alumToUpdate);
             return alumToUpdate;
