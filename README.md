@@ -4,8 +4,6 @@
 
 ### You can visit the website here: https://apidaaalumniplatform.vercel.app/
 
-#### Tech stack: React.js, Spring Boot, PostgreSQL
+#### Tech stack: React.js, Java, Spring Boot, PostgreSQL
 
 #### This is the repository with code for the backend server, deployed on Render + Supabase
-
-### Technologies: Java, Spring Boot, PostgreSQL
